@@ -19,30 +19,28 @@ namespace Biblioteca_Pessoal_Asp.Controllers
         [HttpPost]
         public IActionResult AdicionarLivro(Livro livro)
         {
-
-            var livroBanco = livro;
-
             _context.Add(livro);
             _context.SaveChanges();
 
-            return Ok();
+            return CreatedAtAction(nameof(BuscarId), new { id = livro.Id }, livro); ;
         }
 
         [HttpGet("BuscaPorId")]
         public IActionResult BuscarId(int id)
         {
-            var livro = _context.Livros.Find(id);
+            var livroBanco = _context.Livros.Find(id);
 
-            if (livro == null)
+            if (livroBanco == null)
                 return NotFound();
 
-            return Ok(livro);
+            return Ok(livroBanco);
         }
 
         [HttpPut("{id}")]
         public IActionResult EditarLivro(int id, Livro livro)
         {
             var livroBanco = _context.Livros.Find(id);
+
             if (livroBanco == null)
                 return NotFound();
 
@@ -55,7 +53,7 @@ namespace Biblioteca_Pessoal_Asp.Controllers
 
             _context.SaveChanges();
 
-            return Ok(livro);
+            return CreatedAtAction(nameof(BuscarId), new { id = livro.Id }, livro);
         }
     }
 }

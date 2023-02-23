@@ -2,7 +2,7 @@
 
 ### - Projeto criado com Asp.NET com o objetivo de praticar a criação de REST API´s
 
-### - No estado atual, o banco de dados é in-memory
+### - Banco de dados armazenado em servidor local (SQL Server)
 
 <br>
 

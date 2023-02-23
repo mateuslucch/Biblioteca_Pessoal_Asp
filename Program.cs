@@ -5,8 +5,14 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+// IN MEMORY DATABASE
+// builder.Services.AddDbContext<BibliotecaApiContext>(options =>
+//     options.UseInMemoryDatabase("MyDatabase"));
+
+// sql server database local
 builder.Services.AddDbContext<BibliotecaApiContext>(options =>
-    options.UseInMemoryDatabase("MyDatabase"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoLocal")));
 
 builder.Services.AddControllers().AddJsonOptions(options =>
     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));

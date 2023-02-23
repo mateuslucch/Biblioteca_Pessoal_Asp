@@ -8,7 +8,7 @@
 
 # Personal Library API
 ### - Project made with Asp.NET, with the objective of practicing REST API´s
-### - In the current state, the database works in-memory
+### - Database now is stored in local server (SQL Server)
 
 <br>
 
